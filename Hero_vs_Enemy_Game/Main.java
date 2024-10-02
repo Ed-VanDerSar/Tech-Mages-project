@@ -24,6 +24,6 @@ public class Main {
         scan.close();
     }
     public static final void cleanTerminal() {
-        System.out.println("\033c");    // Código ANSI
+        System.out.println("\033c");    
     }
 }
