@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * The {@code Character} class represents a character in a game, with a name, health, 
  * a weapon, and a health bar. A character can attack another character and equip or 
@@ -36,15 +38,21 @@ public class Character {
      * @param target the character being attacked
      */
     void attack(Character target) {
-        // Subtract the weapon's damage from the target's health
-        target.health -= this.weapon.damage;
+        // Generate random damage based on baseDamage using normal distribution (mean = baseDamage, variance = 1)
+        Random random = new Random();
+        int randomDamage = (int) Math.round(this.weapon.baseDamage + random.nextGaussian());
+    
+        // Ensure health can't drop below 0
+        target.health -= randomDamage;
         target.health = Math.max(target.health, 0);
+    
+        // Update the target's health bar
         target.healthBar.update();
         
         // Print attack details
         System.out.println(this.name + 
                            " did " + 
-                           this.weapon.damage + 
+                           randomDamage + 
                            " damage points to " + 
                            target.name + 
                            " with " + 

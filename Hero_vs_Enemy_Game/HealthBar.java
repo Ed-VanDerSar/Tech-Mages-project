@@ -50,13 +50,11 @@ public class HealthBar {
     void paint() {
         int barrasRestantes = Math.round((float) valorActual / valorMax * tamaño);
         int barrasPerdidas = this.tamaño - barrasRestantes;
-        System.out.println(this.character.name + " HEALTH: " + this.character.health);
-        System.out.println(
+        System.out.println(this.color + this.character.name + " HEALTH: " + this.character.health);
+        System.out.println(this.color +
             this.barra +
-            this.color +
             (simboloRestante.repeat(barrasRestantes)) +
             (simboloPerdido.repeat(barrasPerdidas)) +
-            this.color +
             this.barra
         );
     }
